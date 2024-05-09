@@ -29,11 +29,16 @@ async def read_payment():
 
 
 @artists_router.get("/{artists_id}")
-async def read_artist(payments_id: int):
+async def read_artist(payment_id: int):
     for payment in payment_data:
-        if payment['payments_id'] == payments_id:
+        if payment['payments_id'] == payment_id:
             return payment
     return None
+
+
+@artists_router.get("/get_all_payments")
+async def read_artist():
+    return payment_data
 
 
 @app.on_event('startup')
