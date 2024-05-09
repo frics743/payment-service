@@ -52,4 +52,4 @@ jobs:
           folder-id: ${{ secrets.YC_FOLDER_ID }}
           revision-image-url: cr.yandex/${{ secrets.YC_REGISTRY_ID }}/payment-service:latest
           revision-service-account-id: ${{ secrets.YC_SA_ID}}
-          revision-env: POSTGRES_URL=${{ secrets.ENV_POSTGRES_URL }}
+          #revision-env: POSTGRES_URL=${{ secrets.ENV_POSTGRES_URL }}
