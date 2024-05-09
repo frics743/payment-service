@@ -23,12 +23,12 @@ payment_data = [
 
 
 @payments_router.get("/get_all_payments")
-async def read_payment():
+async def read_payments():
     return payment_data
 
 
 @payments_router.get("/{payments_id}")
-async def read_artist(payment_id: int):
+async def read_payment(payment_id: int):
     for payment in payment_data:
         if payment['payments_id'] == payment_id:
             return payment
