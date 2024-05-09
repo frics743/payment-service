@@ -7,7 +7,7 @@ from models import PaymentMethod, PaymentStatuses
 
 #metadata.create_all(engine)
 
-app = FastAPI(title='Online store of board games: Payment', prefix='')
+app = FastAPI(title='Online store of board games: Payment', prefix='/api/payments', tags=['Payments'])
 
 purchase_id = random.randint(1, 100)
 key_id = random.randint(1, 100)
