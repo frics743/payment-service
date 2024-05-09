@@ -18,6 +18,7 @@ async def shutdown():
 
 
 
+
 #@app.get('/', tags=['Запуск'])
 #async def startup():
 #    await database.connect()
