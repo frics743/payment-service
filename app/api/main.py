@@ -5,7 +5,8 @@ from payments import payments
 from db import metadata, database, engine
 from models import PaymentMethod, PaymentStatuses
 
-app = FastAPI(title='Online store of board games: Payment')
+app = FastAPI(title='Online store of board games: Payment', openapi_url="/api/payments/openapi.json",
+              docs_url="/api/payments/docs")
 
 date = datetime.now() - timedelta(days=random.randrange(3650), seconds=random.randrange(86400))
 status = random.choice(list(PaymentStatuses))
@@ -30,6 +31,5 @@ async def read_payment(payment_id: int):
         if payment['id'] == payment_id:
             return payment
     return None
-
 
 app.include_router(payments_router, prefix='/api/payments', tags=['payments'])
