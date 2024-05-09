@@ -5,7 +5,7 @@ from payments import payments
 from db import metadata, database, engine
 from models import PaymentMethod, PaymentStatuses
 
-metadata.create_all(engine)
+#metadata.create_all(engine)
 
 app = FastAPI(title='Online store of board games: Payment')
 
@@ -49,12 +49,3 @@ async def shutdown():
 
 #app.include_router(payments, prefix='/api/payments', tags=['Payments'])
 
-
-#if __name__ == '__main__':
-#    import uvicorn
-#    import os
-#    try:
-#        PORT = int(os.environ['PORT'])
-#    except KeyError as keyerr:
-#        PORT = 80
-#    uvicorn.run(app, host='0.0.0.0', port=PORT)
