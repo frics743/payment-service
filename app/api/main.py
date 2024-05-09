@@ -5,10 +5,7 @@ from payments import payments
 from db import metadata, database, engine
 from models import PaymentMethod, PaymentStatuses
 
-#metadata.create_all(engine)
-
-app = FastAPI(title='Online store of board games: Payment', openapi_url="/api/payments/openapi.json",
-              docs_url="/api/payments/docs")
+app = FastAPI(title='Online store of board games: Payment')
 
 date = datetime.now() - timedelta(days=random.randrange(3650), seconds=random.randrange(86400))
 status = random.choice(list(PaymentStatuses))
@@ -35,17 +32,4 @@ async def read_payment(payment_id: int):
     return None
 
 
-
-#@app.on_event('startup')
-#async def startup_event():
-#    await database.connect()
-#
-#
-#@app.on_event('shutdown')
-#async def shutdown():
-#    await database.disconnect()
-
 app.include_router(payments_router, prefix='/api/payments', tags=['payments'])
-
-#app.include_router(payments, prefix='/api/payments', tags=['Payments'])
-
