@@ -21,11 +21,11 @@ async def shutdown():
 app.include_router(payments, prefix='/api/payments', tags=['Payments'])
 
 
-#if __name__ == '__main__':
-#    import uvicorn
-#    import os
-#    try:
-#        PORT = int(os.environ['PORT'])
-#    except KeyError as keyerr:
-#        PORT = 80
-#    uvicorn.run(app, host='0.0.0.0', port=PORT)
+if __name__ == '__main__':
+    import uvicorn
+    import os
+    try:
+        PORT = int(os.environ['PORT'])
+    except KeyError as keyerr:
+        PORT = 80
+    uvicorn.run(app, host='0.0.0.0', port=PORT)
