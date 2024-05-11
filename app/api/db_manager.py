@@ -35,7 +35,6 @@ async def get_payment(id):
         raise HTTPException(status_code=500, detail='Internal server error')
 
 
-# Функция которая нужна лишь для моего варианта (У вас может быть другой функционал)
 async def get_purchase_id(purchase_id: int):
     try:
         query = payments.select().where(payments.c.purchase_id == purchase_id)

@@ -4,7 +4,6 @@ from models import PaymentOut, PaymentIn
 from db_manager import add_payment, get_payment, get_all_payments, delete_payment, get_purchase_id
 from service import is_purchase_present
 
-
 payments = APIRouter()
 
 

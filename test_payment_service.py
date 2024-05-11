@@ -17,7 +17,7 @@ class PaymentStatuses(enum.Enum):
     PAID = 'paid'
 
 
-base_url = 'http://0.0.0.0:8010/api/payments/'
+base_url = 'http://payment-service:8010/api/payments/'
 
 purchase_id = random.randint(1, 100)
 key_id = random.randint(1, 100)
@@ -85,15 +85,17 @@ def test_get_payment_by_id_not_found():
 # Тест удаления payments по id {base_url}{id}
 def test_delete_payment():
     with requests_mock.Mocker() as m:
+        id_key = 1
         # Регистрации маршрута с помощью адаптера
-        mock_request_with_data_by_id(m, 1, mock_payment_data)
+        mock_request_with_data_by_id(m, id_key, mock_payment_data)
         # Регистрация маршрута для DELETE запроса
-        m.delete(f'{base_url}1/', json={'message': 'Payment with ID 1 has been successfully deleted'}, status_code=200)
+        m.delete(f'{base_url}1/', json={'message': f'Payment with ID {id_key} has been successfully deleted'},
+                 status_code=200)
         m.delete(f'{base_url}99/', json={'detail': 'Payment not found'}, status_code=404)
-        response = requests.delete(f'{base_url}1/')
+        response = requests.delete(f'{base_url}{id_key}/')
         # Проверка успешного удаления payments
         assert response.status_code == 200
-        assert response.json() == {'message': 'Payment with ID 1 has been successfully deleted'}
+        assert response.json() == {'message': f'Payment with ID {id_key} has been successfully deleted'}
         # Проверка попытки удаления несуществующего payments
         response = requests.delete(f'{base_url}99/')
         assert response.status_code == 404
