@@ -6,7 +6,7 @@ from db import metadata, database, engine
 from models import PaymentMethod, PaymentStatuses
 
 app = FastAPI(title='Online store of board games: Payment', openapi_url="/api/payments/openapi.json",
-              docs_url="/api/payments/docs")
+              docs_url="/docs")
 
 date = datetime.now() - timedelta(days=random.randrange(3650), seconds=random.randrange(86400))
 status = random.choice(list(PaymentStatuses))
