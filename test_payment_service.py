@@ -64,7 +64,7 @@ def test_get_payments_by_id(api):
 
 def test_get_payments_by_id_invalid(api: PaymentsAPI):
     response = api.get_payments_by_id(99)
-    assert (response == None)
+    assert (response == {})
 
 
 if __name__ == '__main__':
