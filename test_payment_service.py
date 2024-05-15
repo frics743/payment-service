@@ -56,12 +56,23 @@ def test_get_all_payments(api):
     ])
 
 
-def test_get_refund_by_id(api):
+def test_get_payments_by_id(api):
     response = api.get_payments_by_id(1)
     assert (response ==
            {'id': 1, 'purchase_id': 1, 'date': '2020-01-01 04:42:05.427694', 'method': 'non_cash', 'status': 'paid'})
 
 
+def test_get_payments_by_id_invalid(api: PaymentsAPI):
+    # Проверка на получение информации о несуществующей компании
+    response = api.get_payments_by_id(99)
+    assert (response == None)
+
+
+if __name__ == '__main__':
+    URL = 'http://localhost:8010/api/payments/'
+    api = PaymentsAPI(URL)
+    test_get_all_payments(api)
+    test_get_payments_by_id(api)
 
 
 
