@@ -63,16 +63,16 @@ def test_get_payments_by_id(api):
 
 
 def test_get_payments_by_id_invalid(api: PaymentsAPI):
-    # Проверка на получение информации о несуществующей компании
     response = api.get_payments_by_id(99)
     assert (response == None)
 
 
 if __name__ == '__main__':
-    URL = 'http://localhost:80/api/payments/'
+    URL = 'http://localhost:8080/api/payments/'
     api = PaymentsAPI(URL)
     test_get_all_payments(api)
     test_get_payments_by_id(api)
+    test_get_payments_by_id_invalid(api)
 
 
 
