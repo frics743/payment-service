@@ -69,7 +69,7 @@ def test_get_payments_by_id_invalid(api: PaymentsAPI):
 
 
 if __name__ == '__main__':
-    URL = 'http://localhost:8010/api/payments/'
+    URL = 'http://localhost:8080/api/payments/'
     api = PaymentsAPI(URL)
     test_get_all_payments(api)
     test_get_payments_by_id(api)
