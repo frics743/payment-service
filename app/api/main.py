@@ -14,23 +14,23 @@ method = random.choice(list(PaymentMethod))
 payments_router = APIRouter()
 
 payment_data = [
-    {'id': 1, 'purchase_id': '1', 'date': str(date), 'method': str(method), 'status': str(status)},
-    {'id': 2, 'purchase_id': '2', 'date': str(date), 'method': str(method), 'status': str(status)},
-    {'id': 3, 'purchase_id': '3', 'date': str(date), 'method': str(method), 'status': str(status)}
+    {'id': 1, 'purchase_id': 1, 'date': '2020-01-01 04:42:05.427694', 'method': 'non_cash', 'status': 'paid'},
+    {'id': 2, 'purchase_id': 2, 'date': '2020-01-02 04:42:05.427694', 'method': 'cash', 'status': 'non_paid'},
+    {'id': 3, 'purchase_id': 3, 'date': '2020-01-03 04:42:05.427694', 'method': 'cash', 'status': 'paid'}
 ]
 
 
 #/api/payments/get_all_payments
 @payments_router.get("/get_all_payments")
-async def read_payments():
+async def get_all_payments():
     return payment_data
 
 
 #/api/payments/{payments_id}?payment_id=1
 @payments_router.get("/{payments_id}")
-async def read_payment(payment_id: int):
+async def get_payments_id(payments_id: int):
     for payment in payment_data:
-        if payment['id'] == payment_id:
+        if payment['id'] == payments_id:
             return payment
     return None
 
