@@ -36,4 +36,4 @@ async def get_payments_id(payments_id: int):
 
 app.include_router(payments_router, prefix='/api/payments', tags=['payments'])
 
-#ssfdg
+#ssfdgf
